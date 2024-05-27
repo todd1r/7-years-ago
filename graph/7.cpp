@@ -1,6 +1,6 @@
 //topologicl sort
 //tc o(n+e)
-//sc o(n) linear
+//sc o(n+e) linear
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -26,37 +26,38 @@ void print(map<int,set<int>> &adjL)
         cout<<endl;
     }
 }
-void topoSort(int node,map<int,bool> &visited,stack<int> &s,map<int,set<int>> &adjL)
-{
-    visited[node]=1;
-    for(auto neighbour:adjL[node])
-    {
-        if(!visited[neighbour])
-        topoSort(neighbour,visited,s,adjL);
-    }
-    //imp
-    s.push(node);
-}
 vector<int> topologicalSort(map<int,set<int>> &adjL)
 {
-    //yaha bass usne vector<bool> visited use kiya kaise?
-    map<int,bool> visited;
-    stack<int> s;
+    //find all indegree
+    map<int,int> indegree;
     for(auto &it:adjL)
         {
-            if(!visited[it.first])
-            {
-               // bool ans=
-                topoSort(it.first,visited,s,adjL);
-                // if(ans==1)
-                // return true;
-            }
+            for(auto &it2:it.second)
+            indegree[it2]++;
         }
-        vector<int> ans;
-        while(!s.empty())
+        //o degree wale node ko push kardo
+        queue<int> q;
+        for(auto &it:adjL)
         {
-            ans.push_back(s.top());
-            s.pop();
+            if(indegree[it.first]==0)
+            q.push(it.first);
+        }
+
+        //do bfs
+        vector<int> ans;
+        while(!q.empty())
+        {
+            int front=q.front();
+            q.pop();
+            //ans store
+            ans.push_back(front);
+            //neighbour indegree update
+            for(auto neighbour:adjL[front])
+            {
+                indegree[neighbour]--;
+                if(indegree[neighbour]==0)
+                q.push(neighbour);
+            }
         }
         return ans;
 }
