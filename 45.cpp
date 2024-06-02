@@ -30,3 +30,6 @@ cout<<any_of(v.begin(),v.end(),
 cout<<any_of(v.begin(),v.end(),
 [](int x){return x>0;})<<endl;
 }
+
+
+//if u have to update a vector or array then it's called online query otherwise offline query

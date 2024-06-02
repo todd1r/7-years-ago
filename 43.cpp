@@ -79,4 +79,6 @@ int main()
     }
     else
     cout<<(*ptr)<<endl;
+
+    //map mein sirf key ke upr hi lower bound lagta hai
 }

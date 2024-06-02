@@ -36,3 +36,5 @@ int main()
     // cout<<val<<endl;
   }
 }
+//no of func. calls is o(n^2)
+// tc of 1 func. call is o(1)

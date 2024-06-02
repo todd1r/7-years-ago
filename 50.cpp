@@ -10,18 +10,18 @@ int main()
     cin>>v[i];
     int to_find;
     cin>>to_find;
-    int lo=0,hi=n-1;
+    int low=0,hi=n-1;
     int mid;
-    while(hi-lo>1)
+    while(hi-low>1)
     {
         int mid=(hi-low)/2+low;
         if(v[mid]<to_find)
-        lo=mid+1;
+        low=mid+1;
         else
         hi=mid;
     }
-    if(v[lo]==to_find)
-    cout<<lo<<endl;
+    if(v[low]==to_find)
+    cout<<low<<endl;
     else if(v[hi]==to_find)
     cout<<hi<<endl;
     else

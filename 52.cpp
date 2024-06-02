@@ -32,3 +32,8 @@ int main()
     cout<<setprecision(8)<<lo<<" "<<hi<<endl;
     cout<<pow(x,1.0/n)<<endl;
 }
+
+
+//TC P*LOG(N*(10^D))
+//PTH ROOT OF N
+//D IS DECIMAL ACCURACY

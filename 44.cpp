@@ -15,4 +15,18 @@ int main()
     cout<<sum<<endl;
     int cnt=(count(v.begin(),v.end(),4));
     cout<<cnt<<endl;
+    auto it=(find(v.begin(),v.end(),4));
+    if(it!=v.end())
+    cout<<*it<<endl;
+    else
+    cout<<"Element not found\n";
+    reverse(v.begin()+2,v.end());
+    for(auto val:v)
+    cout<<val<<" ";
+    cout<<endl;
+    string s="abcd";
+    reverse(s.begin(),s.end());
+    cout<<s<<endl;
+    //o(n) for vector and array and o(log(n)) for maps and sets
+    //for array just replace v.begin by v and v.end() by v+n
 }
