@@ -134,6 +134,19 @@ void noOfCycles(map<int,set<int>> &adjL)
     //cout<<"No of cycles using BFS "<<count/2<<endl;
     cout<<"No of cycles using DFS "<<count/2<<endl;
 }
+void noOfCyclesInDirectedGraphDFS(map<int,set<int>> &adjL)
+{
+    map<int,bool> visited;
+    // map<int,int> parent;
+    int count=0;
+    for(auto &it:adjL)
+    {
+        if(!visited[it.first])
+        {
+            DirectedgraphDFS(adjL,visited,count,it.first);
+        }
+    }
+}
 void TOPO(map<int,set<int>> &adjL,map<int,bool> &visited,stack<int> &s,int node)
 {
     visited[node]=1;

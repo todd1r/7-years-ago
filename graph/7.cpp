@@ -35,6 +35,7 @@ vector<int> topologicalSort(map<int,set<int>> &adjL)
             for(auto &it2:it.second)
             indegree[it2]++;
         }
+        
         //o degree wale node ko push kardo
         queue<int> q;
         for(auto &it:adjL)
