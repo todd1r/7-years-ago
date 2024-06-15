@@ -110,58 +110,6 @@ for(auto &it:key)
 result.push_back(it.second);
 return result;
 }
-void dfs(int node,int parent,int &timer,vector<int> &disc,vector<int> &low,vector<vector<int>> &result,map<int,set<int>> &adjL, map<int,bool> &vis)
-{
-    vis[node]=1;
-    disc[node]=low[node]=timer++;
-    for(auto nbr:adjL[node])
-    {
-        if(nbr==parent)
-        {
-            continue;
-        }
-        if(!vis[nbr])
-        {
-            dfs(nbr,node,timer,disc,low,result,adjL,vis);
-            low[node]=min(low[node],low[nbr]);
-            //check edge is bridge
-            if(low[nbr]>disc[node])
-            {
-                vector<int> ans;
-                ans.push_back(node);
-                ans.push_back(nbr);
-                result.push_back(ans);
-            }
-        }
-        else
-        {
-            //back edge
-            low[node]=min(low[node],disc[nbr]);
-        }
-    }
-}
-vector<vector<int>> findBridges(map<int,set<int>> &adjL,int v,int e)
-{
-    int timer=0;
-    vector<int> disc(v);
-    vector<int> low(v);
-    int parent=-1;
-    map<int,bool> vis;
-    for(int i=0;i<v;i++)
-    {
-        disc[i]=-1;
-        low[i]=-1;
-    }
-
-    vector<vector<int>> result;
-    //dfs
-    for(int i=0;i<v;i++)
-    {
-        if(!vis[i])
-        dfs(i,parent,timer,disc,low,result,adjL,vis);
-    }
-    return result;
-}
 int main()
 {
     int n;

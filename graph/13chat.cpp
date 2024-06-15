@@ -33,9 +33,6 @@ bool cmp(vector<int> &a, vector<int> &b) {
 
 int minimumSpanningTree(vector<vector<int>> &edges, int n) {
     sort(edges.begin(), edges.end(), cmp);
-    for (int i = 0; i < edges.size(); i++) {
-        cout << "Edge " << i << ": " << edges[i][0] << " " << edges[i][1] << " " << edges[i][2] << endl;
-    }
     vector<int> parent(n);
     vector<int> rank(n);
     makeSet(parent, rank, n);
